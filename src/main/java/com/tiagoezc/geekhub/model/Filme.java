@@ -14,10 +14,8 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-
 @Entity
-@RequestMapping("/filme")
+
 public class Filme {
 
 	@Id

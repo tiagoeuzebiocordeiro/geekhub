@@ -13,10 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-
 @Entity
-@RequestMapping("/genero")
+
 public class Genero {
 
 	@Id
