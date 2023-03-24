@@ -4,56 +4,56 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Entity
-@RequestMapping("/genero")
-public class Genero {
+@RequestMapping("/diretor")
+public class Diretor {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 
-	@NotBlank(message = "O tipo do gênero é obrigatório.")
-	@Size(max = 20, message = "O tipo do gênero deve ter no máximo 20 caracteres.")
-	@Column(name = "tipo", nullable = false, unique = true, length = 20)
-	private String tipo;
+	@NotBlank(message = "O nome do diretor é obrigatório.")
+	@Size(max = 20, message = "O nome do diretor deve ter no máximo 20 caracteres.")
+	@Column(name = "nome", nullable = false, unique = true, length = 20)
+	private String nome;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "filme_id")
+	@OneToOne(mappedBy = "diretor")
 	private Filme filme;
 	
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public Filme getFilme() {
 		return filme;
 	}
+
 	public void setFilme(Filme filme) {
 		this.filme = filme;
 	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -67,7 +67,7 @@ public class Genero {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Genero other = (Genero) obj;
+		Diretor other = (Diretor) obj;
 		return Objects.equals(id, other.id);
 	}
 	
