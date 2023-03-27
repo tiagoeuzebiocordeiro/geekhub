@@ -46,6 +46,8 @@ public class Filme {
 	@JoinColumn(name = "diretor_id")
 	private Diretor diretor;
 	
+	private String nomeImagem;
+	
 	 public Long getId() {
 		return id;
 	}
@@ -106,5 +108,13 @@ public class Filme {
 	        generos.remove(genero);
 	        genero.setFilme(null);
 	    }
+
+		public String getNomeImagem() {
+			return nomeImagem;
+		}
+
+		public void setNomeImagem(String nomeImagem) {
+			this.nomeImagem = nomeImagem;
+		}
 	
 }
