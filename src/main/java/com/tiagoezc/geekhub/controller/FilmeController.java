@@ -77,7 +77,7 @@ public class FilmeController {
 		}
 		
 		attributes.addFlashAttribute("mensagem", "Filme cadastrado com sucesso");
-		return "redirect:/auth/admin/admin-criar-filme";
+		return "redirect:/filme/novo";
 
 	}
 	

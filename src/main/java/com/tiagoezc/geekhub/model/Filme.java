@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -27,7 +28,7 @@ public class Filme {
 	@Column(name = "nome", nullable = false, unique = true, length = 20)
 	private String nome;
 	
-	@NotBlank(message = "Informe a duração do filme.")
+	@NotNull(message = "Informe a duração do filme.")
 	@Column(name = "duracao", nullable = false)
 	private Integer duracao; // em minutos
 	

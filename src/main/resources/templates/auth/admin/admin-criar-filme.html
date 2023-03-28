@@ -9,10 +9,17 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 
+<!-- MULTI SELECT -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
+
+<!--  MULTI SELECT -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="bootstrap-multiselect.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
 <style>
 
 	.mensagem {
@@ -35,7 +42,7 @@
 
 <div class="container pt-5">
 
-<form th:action="@{/filme/salvar}" th:object="${filme}" method="post">
+<form th:action="@{/filme/salvar}" th:object="${filme}" method="post" enctype="multipart/form-data">
 
 
 
@@ -45,7 +52,7 @@
 	      <div class="input-group">
 	        <div class="input-group-prepend">
 	          <div class="input-group-text">
-	            <i class="fa fa-archive"></i>
+	            <i class="fa fa-info" id="icon-form"></i>
 	          </div>
 	        </div> 
 	        <input id="nome" name="nome" placeholder="Nome do filme" type="text" class="form-control" th:field="*{nome}">
@@ -63,7 +70,7 @@
 	      <div class="input-group">
 	        <div class="input-group-prepend">
 	          <div class="input-group-text">
-	            <i class="fa fa-money"></i>
+	            <i class="fa fa-clock-o" id="icon-form"></i>
 	          </div>
 	        </div> 
 	        <input id="duracao" name="duracao" placeholder="Duração em minutos do filme" type="number" class="form-control" th:field="*{duracao}">
@@ -102,15 +109,20 @@
 				<label for="categoria"  class="col-sm-1 col-form-label">Gênero</label> 
 				
 				<div class="col-4">
-				<select multiple
+				<select name="generos" multiple
 					id="generos" class="form-control" th:field="*{generos}"
 					th:classappend="${#fields.hasErrors('generos')} ? 'is-invalid'">
-					<option value="">Selecione</option>
 					<option th:each="g : ${generos}" th:value="${g.id}"
 						th:text=${g.tipo}>Teste</option>
 
 				</select>
 </div>
+			</div>
+			<div class="form-group col-md-6">
+				<label for="capa"  class="col-sm-1 pl-6 col-form-label">Capa</label> 
+				
+				<input type="file" name="file">
+		
 			</div>
 			<div class="form-group row">
 	    <div class="offset-4 col-8">
@@ -162,6 +174,20 @@
 
 }	
 	</script>
+	
+	<script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
+	
+	<script>
+    new MultiSelectTag('generos')  // id
+    
+    	new MultiSelectTag('countries', {
+    rounded: true,    // default true
+    shadow: true      // default false
+})
+    
+	</script>
+	
+
 	
 </body>
 </html>
