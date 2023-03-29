@@ -69,4 +69,6 @@ public class Genero {
 		return Objects.equals(id, other.id);
 	}
 	
+	
+	
 }

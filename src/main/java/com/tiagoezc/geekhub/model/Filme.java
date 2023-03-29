@@ -9,7 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -40,14 +41,21 @@ public class Filme {
 	// Falta adicionar relacionamento com diretor e genero
 	// ver como faz pra adicionar imagem (capa), se eu preciso criar um atributo ou não
 	
-	@OneToMany(mappedBy = "filme")
-	private Set<Genero> generos; 
+	@ManyToMany
+    @JoinTable(
+            name = "filme_genero",
+            joinColumns = @JoinColumn(name = "filme_id"),
+            inverseJoinColumns = @JoinColumn(name = "genero_id")
+    )
+    private Set<Genero> generos;
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "diretor_id")
 	private Diretor diretor;
 	
 	private String nomeImagem;
+	
+	
 	
 	 public Long getId() {
 		return id;

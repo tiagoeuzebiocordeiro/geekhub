@@ -88,6 +88,8 @@ public class FilmeController {
 		return generoRepository.findAll();
 	}
 	
+	
+	
 	@ModelAttribute("diretor")
 	public List<Diretor> listaDeDiretores() {
 		return diretorRepository.findAll();
